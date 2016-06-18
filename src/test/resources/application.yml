@@ -1,0 +1,8 @@
+#
+# Dropbox properties.
+#
+dropbox:
+  appKey: 2z567sa0xnwflr5
+  secret: 6r2o8fwc55fqbvc
+  accessToken: RZMOlrMQf_AAAAAAAAFCHbo_DxtygxU7yjfbQFtODtIfmmVjcMhqqf4sjJDUUFYX
+  redirectCallbackURL: http://localhost:8080/dropbox/callback
