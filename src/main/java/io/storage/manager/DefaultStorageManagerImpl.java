@@ -44,24 +44,22 @@ public class DefaultStorageManagerImpl implements StorageManager {
         Assert.notNull(credentialId, "Credentials identifier cannot be null.");
 
         //
-        // Try to locate an existing instance in the cache for the given credentials.
-        //
-        StorageService service;
-        //
         // No cache item found. Need to create a new service provider.
         //
         Credentials credentials = repository.getCredentials(credentialId);
+        if (credentials == null) {
+            throw new CredentialsException("Unknown credentials.");
+        }
 
         @SuppressWarnings("unchecked")
         StorageServiceProvider<Credentials> provider = (StorageServiceProvider<Credentials>) providerMap.get(credentials.getClass());
         if (provider == null) {
             throw new InvalidStorageTypeException(
-                    String.format("Unexpected: could not find storage service provider for credentials of type '%s' (credential ID: '%s').",
-                            credentials.getClass().getSimpleName(),
-                            credentialId));
+                    String.format("Unexpected: Could not find storage service provider for credentials of type '%s'.",
+                            credentials.getClass().getSimpleName()));
         }
 
-       return new StorageService(credentials, provider);
+        return new StorageService(credentials, provider);
     }
 
     @Override
