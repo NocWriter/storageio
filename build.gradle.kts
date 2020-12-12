@@ -12,7 +12,7 @@ plugins {
 object Artifact {
     const val GROUP_ID = "io.storage"
     const val NAME = "core"
-    const val VERSION = "1.0.0"
+    const val VERSION = "1.0.1"
 }
 
 /**
